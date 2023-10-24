@@ -56,244 +56,299 @@ function index_slider_metaboxes()
         'id' => 'index-slider-content',
         'type' => 'wysiwyg',
     ));
-
 }
 
 add_action('cmb2_admin_init', 'index_slider_metaboxes');
 
 
 
+// repeater add more option for index empty section
+function index_empty_metaboxes()
+{
+    $cmb = new_cmb2_box(array(
+        'id' => 'index-empty-repeater',
+        'title' => 'Add More Option For Index Empty Section',
+        'object_types' => array('page'),
+        'show_on' => array(
+            'key' => 'page-template',
+            'value' => 'index.php',
+        ),
+        'context' => 'normal',
+        'priority' => 'high',
+        'show_names' => true,
+    ));
 
-// // metabox for index page banner
-// function metabox_for_index_banner(array $index_page_banner)
-// {
-//     $index_page_banner[] = array(
-//         'id' => 'index_page_banner',
-//         'title' => 'Index Page Banner Section',
-//         'object_types' => array('page'),
-//         'show_on' => array(
-//             'key' => 'page-template',
-//             'value' => 'index.php',
-//         ),
-//         'fields' => array(
-//             array(
-//                 'id' => 'index-banner-image',
-//                 'name' => 'Upload Banner Image for Index',
-//                 'default' => get_template_directory_uri() . '/assets/images/hero-bg.png',
-//                 'type' => 'file',
-//             ),
-//         ),
-//     );
+    $add_more_option = $cmb->add_field(array(
+        'id' => 'index-empty-item',
+        'type' => 'group',
+        'repeatable' => true,
+        'options' => array(
+            'group_title' => 'Add More {#}',
+            'add_button' => 'Add Another Option',
+            'remove_button' => 'Remove Option',
+            'closed' => true,
+            'sortable' => true,
+        ),
+    ));
 
-//     return $index_page_banner;
-// }
+    $cmb->add_group_field($add_more_option, array(
+        'name' => 'Icon Class Name',
+        'desc' => 'Write Icon Name Here',
+        'id' => 'index-empty-section-icon-title',
+        'type' => 'text',
+    ));
 
-// add_filter('cmb2_meta_boxes', 'metabox_for_index_banner');
+    $cmb->add_group_field($add_more_option, array(
+        'name' => 'Section Title',
+        'desc' => 'Write Title Here',
+        'id' => 'index-empty-section-title',
+        'type' => 'text',
+    ));
 
-// // metabox for index page about background image
-// function metabox_for_index_about_background(array $index_page_about_background)
-// {
-//     $index_page_about_background[] = array(
-//         'id' => 'index_page_about_background',
-//         'title' => 'Index Page About Background Section',
-//         'object_types' => array('page'),
-//         'show_on' => array(
-//             'key' => 'page-template',
-//             'value' => 'index.php',
-//         ),
-//         'fields' => array(
-//             array(
-//                 'id' => 'index-about-background',
-//                 'name' => 'Upload About Background Image',
-//                 'default' => get_template_directory_uri() . '/assets/images/about-bg.png',
-//                 'type' => 'file',
-//             ),
-//         ),
-//     );
+    $cmb->add_group_field($add_more_option, array(
+        'name' => 'Section Content',
+        'desc' => 'Write Content Here',
+        'id' => 'index-empty-section-content',
+        'type' => 'wysiwyg',
+    ));
+}
 
-//     return $index_page_about_background;
-// }
-
-// add_filter('cmb2_meta_boxes', 'metabox_for_index_about_background');
+add_action('cmb2_admin_init', 'index_empty_metaboxes');
 
 
+// repeater add more option for index empty section image
+function index_empty_image_metaboxes()
+{
+    $cmb = new_cmb2_box(array(
+        'id' => 'index-empty-img-repeater',
+        'title' => 'Add More Option For Index Empty Section Image',
+        'object_types' => array('page'),
+        'show_on' => array(
+            'key' => 'page-template',
+            'value' => 'index.php',
+        ),
+        'context' => 'normal',
+        'priority' => 'high',
+        'show_names' => true,
+    ));
 
-// // metabox for index page about 
-// function metabox_for_index_about(array $index_page_about)
-// {
-//     $index_page_about[] = array(
-//         'id' => 'index_page_about',
-//         'title' => 'Index Page About Section',
-//         'object_types' => array('page'),
-//         'show_on' => array(
-//             'key' => 'page-template',
-//             'value' => 'index.php',
-//         ),
-//         'fields' => array(
-//             array(
-//                 'id' => 'index-about-content-title',
-//                 'name' => 'About Title',
-//                 'default' => "Welcome to Sid Vishnu's Gaming Universe",
-//                 'type' => 'text',
-//             ),
+    $add_more_option = $cmb->add_field(array(
+        'id' => 'index-empty-img-item',
+        'type' => 'group',
+        'repeatable' => true,
+        'options' => array(
+            'group_title' => 'Add More {#}',
+            'add_button' => 'Add Another Option',
+            'remove_button' => 'Remove Option',
+            'closed' => true,
+            'sortable' => true,
+        ),
+    ));
 
-//             array(
-//                 'id' => 'index-about-content-description-one',
-//                 'name' => 'About Description One',
-//                 'default' => "Hello! I'm Sid Vishnu, a game designer based in the UK. I'm a narrative designer and story writer I specialize in creating stories and designing games that take players on unforgettable journeys.",
-//                 'type' => 'wysiwyg',
-//             ),
-//             array(
-//                 'id' => 'index-about-content-description-two',
-//                 'name' => 'About Description Two',
-//                 'default' => "Here, you'll discover a collection of my projects, each one a blend of captivating stories and interactive gameplay. From epic adventures to intimate experiences, every game is a unique world waiting to be explored.",
-//                 'type' => 'wysiwyg',
-//             ),
-//             array(
-//                 'id' => 'index-about-content-image',
-//                 'name' => 'Upload About Content Image',
-//                 'default' => get_template_directory_uri() . '/assets/images/about-img.png',
-//                 'type' => 'file',
-//             ),
-//         ),
-//     );
+    $cmb->add_group_field($add_more_option, array(
+        'name' => 'Image',
+        'desc' => 'Upload Section Slider Image',
+        'id' => 'index-empty-section-image',
+        'type' => 'file',
+    ));
+}
 
-//     return $index_page_about;
-// }
-
-// add_filter('cmb2_meta_boxes', 'metabox_for_index_about');
+add_action('cmb2_admin_init', 'index_empty_image_metaboxes');
 
 
 
-// // metabox for index page service content
-// function metabox_for_index_service(array $index_page_service)
-// {
-//     $index_page_service[] = array(
-//         'id' => 'index_page_about_service',
-//         'title' => 'Index Page Service Section',
-//         'object_types' => array('page'),
-//         'show_on' => array(
-//             'key' => 'page-template',
-//             'value' => 'index.php',
-//         ),
-//         'fields' => array(
-//             array(
-//                 'id' => 'index-service-title',
-//                 'name' => 'About Service Title',
-//                 'default' => "What I Do",
-//                 'type' => 'text',
-//             ),
-//         ),
-//     );
+// metabox for index section
+function metabox_for_index_section_item(array $index_section_item)
+{
+    $index_section_item[] = array(
+        'id' => 'index_page_section_item',
+        'title' => 'Index Page Section Item',
+        'object_types' => array('page'),
+        'show_on' => array(
+            'key' => 'page-template',
+            'value' => 'index.php',
+        ),
+        'fields' => array(
+            array(
+                'id' => 'index-page-section-item-title',
+                'name' => 'Title',
+                'default' => "WHERE WE ARE",
+                'type' => 'text',
+            ),
 
-//     return $index_page_service;
-// }
+            array(
+                'id' => 'index-page-section-item-location',
+                'name' => 'Location',
+                'default' => "We located in London - United Kingdom",
+                'type' => 'text',
+            ),
 
-// add_filter('cmb2_meta_boxes', 'metabox_for_index_service');
+            array(
+                'id' => 'index-page-section-item-content',
+                'name' => 'Content',
+                'default' => "Est illo netus natus. Blanditiis autem, justo sagittis tempora? Eligendi recusandae nisi similique parturient minima eligendi exercitation convallis litora facilisis corrupti? Ante rhoncus praesent augue. Asperiores vitae quod officiis.Cillum voluptas placeat eum praesent! Nisi. Molestias mauris ac varius? Cubilia potenti faucibus risus, maecenas pellentesque, mollitia modi, nostrud senectus, assumenda ipsa incidunt quibusdam ouis. Vel praesentium olutpat numquam incidunt hic et lacus.",
+                'type' => 'wysiwyg',
+            ),
 
+            array(
+                'id' => 'index-page-section-item-address',
+                'name' => 'Address',
+                'default' => "25/A stret AV, New York, United States",
+                'type' => 'text',
+            ),
 
-// // repeater add more option for about service item  
-// function index_about_service_metaboxes()
-// {
-//     $cmb = new_cmb2_box(array(
-//         'id' => 'about-service-item-repeater',
-//         'title' => 'Add More Option For About Service Item',
-//         'object_types' => array('page'),
-//         'show_on' => array(
-//             'key' => 'page-template',
-//             'value' => 'index.php',
-//         ),
-//         'context' => 'normal',
-//         'priority' => 'high',
-//         'show_names' => true,
-//     ));
+            array(
+                'id' => 'index-page-section-item-phone',
+                'name' => 'Location',
+                'default' => "(123) 02-556878533",
+                'type' => 'text',
+            ),
 
-//     $add_more_option = $cmb->add_field(array(
-//         'id' => 'about-service-item',
-//         'type' => 'group',
-//         'repeatable' => true,
-//         'options' => array(
-//             'group_title' => 'Add More {#}',
-//             'add_button' => 'Add Another Option',
-//             'remove_button' => 'Remove Option',
-//             'closed' => true,
-//             'sortable' => true,
-//         ),
-//     ));
+            array(
+                'id' => 'index-page-section-item-map-image',
+                'name' => 'Map Image',
+                'default' => get_template_directory_uri() . '/assets/images/map.png',
+                'type' => 'file',
+            ),
+        ),
+    );
 
-//     $cmb->add_group_field($add_more_option, array(
-//         'name' => 'About Service Item Title',
-//         // 'desc' => 'Enter the feature title',
-//         'id' => 'about-service-item-title',
-//         'type' => 'text',
-//     ));
+    return $index_section_item;
+}
 
-//     $cmb->add_group_field($add_more_option, array(
-//         'name' => 'About Service Item Description',
-//         // 'desc' => 'Enter the feature description',
-//         'id' => 'about-service-item-description',
-//         'type' => 'wysiwyg',
-//     ));
-// }
-
-// add_action('cmb2_admin_init', 'index_about_service_metaboxes');
+add_filter('cmb2_meta_boxes', 'metabox_for_index_section_item');
 
 
-// // metabox for index page portfolio
-// function metabox_for_index_portfolio(array $index_page_portfolio)
-// {
-//     $index_page_portfolio[] = array(
-//         'id' => 'index_page_portfolio_section',
-//         'title' => 'Index Page Portfolio Section',
-//         'object_types' => array('page'),
-//         'show_on' => array(
-//             'key' => 'page-template',
-//             'value' => 'index.php',
-//         ),
-//         'fields' => array(
-//             array(
-//                 'id' => 'index-portfolio-title',
-//                 'name' => 'Portfolio Title',
-//                 'default' => 'My Portfolio',
-//                 'type' => 'text',
-//             ),
-//         ),
-//     );
+// metabox for index section empty container
+function metabox_for_index_empty_container(array $index_empty_conatiner)
+{
+    $index_empty_conatiner[] = array(
+        'id' => 'index_page_empty_container',
+        'title' => 'Goal Section',
+        'object_types' => array('page'),
+        'show_on' => array(
+            'key' => 'page-template',
+            'value' => 'index.php',
+        ),
+        'fields' => array(
+            array(
+                'id' => 'index-page-empty-container-image',
+                'name' => 'Image',
+                'default' => get_template_directory_uri() . '/assets/images/mk-5.jpg',
+                'type' => 'file',
+            ),
+        ),
+    );
 
-//     return $index_page_portfolio;
-// }
+    return $index_empty_conatiner;
+}
 
-// add_filter('cmb2_meta_boxes', 'metabox_for_index_portfolio');
-
-
+add_filter('cmb2_meta_boxes', 'metabox_for_index_empty_container');
 
 
+// repeater add more option for index empty section container
+function index_empty_section_container_metaboxes()
+{
+    $cmb = new_cmb2_box(array(
+        'id' => 'index-empty-section-repeater',
+        'title' => 'Add More Option For Index Empty Section Container',
+        'object_types' => array('page'),
+        'show_on' => array(
+            'key' => 'page-template',
+            'value' => 'index.php',
+        ),
+        'context' => 'normal',
+        'priority' => 'high',
+        'show_names' => true,
+    ));
 
-// // category extra field 
-// function cmb2_add_metabox_to_taxonomy_page()
-// {
-//     $taxonomy = 'portfolio_category'; // Replace with your custom taxonomy name
+    $add_more_option = $cmb->add_field(array(
+        'id' => 'index-empty-section-container',
+        'type' => 'group',
+        'repeatable' => true,
+        'options' => array(
+            'group_title' => 'Add More {#}',
+            'add_button' => 'Add Another Option',
+            'remove_button' => 'Remove Option',
+            'closed' => true,
+            'sortable' => true,
+        ),
+    ));
 
-//     $cmb = new_cmb2_box(array(
-//         'id'           => 'portfolio_category_metabox',
-//         'title'        => 'Portfolio Category Metabox',
-//         'object_types' => array('term'), // This specifies that it's for taxonomy terms
-//         'taxonomies'   => array($taxonomy), // Specify the taxonomy you want to target
-//     ));
+    $cmb->add_group_field($add_more_option, array(
+        'name' => 'Icon',
+        'desc' => 'Upload Container Section Icon',
+        'id' => 'index-empty-section-container-icon',
+        'type' => 'text',
+    ));
 
-//     $cmb->add_field(array(
-//         'name' => 'Category Image',
-//         'id'   => 'portfolio_cat_img',
-//         'default' => get_template_directory_uri() . '/assets/images/portfolio/portfolio-8.png',
-//         'type' => 'file',
-//     ));
+    $cmb->add_group_field($add_more_option, array(
+        'name' => 'Title',
+        'desc' => 'Write Container Section Title',
+        'id' => 'index-empty-section-container-title',
+        'type' => 'text',
+    ));
 
-//     $cmb->add_field(array(
-//         'name' => 'My Work Title',
-//         'id'   => 'my-work-texonomy',
-//         'default' => 'My Work',
-//         'type' => 'text',
-//     ));
-// }
+    $cmb->add_group_field($add_more_option, array(
+        'name' => 'Icon',
+        'desc' => 'Write Container Section Description',
+        'id' => 'index-empty-section-container-desc',
+        'type' => 'wysiwyg',
+    ));
+}
 
-// add_action('cmb2_admin_init', 'cmb2_add_metabox_to_taxonomy_page');
+add_action('cmb2_admin_init', 'index_empty_section_container_metaboxes');
+
+
+
+// repeater add more option for index counter section
+function index_counter_section_metaboxes()
+{
+    $cmb = new_cmb2_box(array(
+        'id' => 'index-counter-section-repeater',
+        'title' => 'Add More Option For Index Counter Section',
+        'object_types' => array('page'),
+        'show_on' => array(
+            'key' => 'page-template',
+            'value' => 'index.php',
+        ),
+        'context' => 'normal',
+        'priority' => 'high',
+        'show_names' => true,
+    ));
+
+    $add_more_option = $cmb->add_field(array(
+        'id' => 'index-counter-section-container',
+        'type' => 'group',
+        'repeatable' => true,
+        'options' => array(
+            'group_title' => 'Add More {#}',
+            'add_button' => 'Add Another Option',
+            'remove_button' => 'Remove Option',
+            'closed' => true,
+            'sortable' => true,
+        ),
+    ));
+
+    $cmb->add_group_field($add_more_option, array(
+        'name' => 'Icon',
+        'id' => 'index-counter-section-icon',
+        'type' => 'text',
+    ));
+
+    $cmb->add_group_field($add_more_option, array(
+        'name' => 'Data',
+        'id' => 'index-counter-section-data',
+        'type' => 'text',
+    ));
+
+    $cmb->add_group_field($add_more_option, array(
+        'name' => 'Title',
+        'id' => 'index-counter-section-title',
+        'type' => 'text',
+    ));
+}
+
+add_action('cmb2_admin_init', 'index_counter_section_metaboxes');
+
+

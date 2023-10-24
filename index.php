@@ -8,7 +8,7 @@ get_header();
 ?>
 
 
-
+<!-- done  -->
 <div class="section-slider home-slider full-screen-size box-middle-container">
     <div class="flexslider advanced-slider slider" data-options="animation:fade">
         <ul class="slides">
@@ -111,264 +111,242 @@ get_header();
     </div>
 </div>
 
+<!-- done  -->
 <div class="section-empty">
     <div class="content">
         <table class="grid-table border-table">
             <tbody>
-                <tr>
-                    <td>
-                        <div class="advs-box advs-box-top-icon" data-anima="pulse-fast" data-trigger="hover">
-                            <i class="im-film-strip icon circle anima"></i>
-                            <h3>POST PRODUCTION VIDEO</h3>
-                            <p>
-                                Interdum iusto pulvinar consequuntur augue optio, repellat fuga Purus expedita fusce temporibus est odit mi quos. Aliquid semper veritatis dignissimos.
-                            </p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="advs-box advs-box-top-icon" data-anima="pulse-fast" data-trigger="hover">
-                            <i class="im-paint-brush icon circle anima"></i>
-                            <h3>GRPAHICS AND WEB DESIGN</h3>
-                            <p>
-                                Interdum iusto pulvinar consequuntur augue optio, repellat fuga Purus expedita fusce temporibus est odit mi quos. Aliquid semper veritatis dignissimos.
-                            </p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="advs-box advs-box-top-icon" data-anima="pulse-fast" data-trigger="hover">
-                            <i class="im-camera-2 icon circle anima"></i>
-                            <h3>PHOTO MANIUPLATION</h3>
-                            <p>
-                                Interdum iusto pulvinar consequuntur augue optio, repellat fuga Purus expedita fusce temporibus est odit mi quos. Aliquid semper veritatis dignissimos.
-                            </p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="advs-box advs-box-top-icon" data-anima="pulse-fast" data-trigger="hover">
-                            <i class="im-business-manwoman icon circle anima"></i>
-                            <h3>SUPPORT FOR EXPERTS</h3>
-                            <p>
-                                Interdum iusto pulvinar consequuntur augue optio, repellat fuga Purus expedita fusce temporibus est odit mi quos. Aliquid semper veritatis dignissimos.
-                            </p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="advs-box advs-box-top-icon" data-anima="pulse-fast" data-trigger="hover">
-                            <i class="im-keyboard icon circle anima"></i>
-                            <h3>WEB DEVELOPMENT</h3>
-                            <p>
-                                Interdum iusto pulvinar consequuntur augue optio, repellat fuga Purus expedita fusce temporibus est odit mi quos. Aliquid semper veritatis dignissimos.
-                            </p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="advs-box advs-box-top-icon" data-anima="pulse-fast" data-trigger="hover">
-                            <i class="im-wordpress icon circle anima"></i>
-                            <h3>WORDPRESS SERVICE</h3>
-                            <p>
-                                Interdum iusto pulvinar consequuntur augue optio, repellat fuga Purus expedita fusce temporibus est odit mi quos. Aliquid semper veritatis dignissimos.
-                            </p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="advs-box advs-box-top-icon" data-anima="pulse-fast" data-trigger="hover">
-                            <i class="im-target-market icon circle anima"></i>
-                            <h3>MARKETING AND SEO</h3>
-                            <p>
-                                Interdum iusto pulvinar consequuntur augue optio, repellat fuga Purus expedita fusce temporibus est odit mi quos. Aliquid semper veritatis dignissimos.
-                            </p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="advs-box advs-box-top-icon" data-anima="pulse-fast" data-trigger="hover">
-                            <i class="im-server-2 icon circle anima"></i>
-                            <h3>MHOSTING AND DOMAIN</h3>
-                            <p>
-                                Interdum iusto pulvinar consequuntur augue optio, repellat fuga Purus expedita fusce temporibus est odit mi quos. Aliquid semper veritatis dignissimos.
-                            </p>
-                        </div>
-                    </td>
-                </tr>
+
+                <?php
+
+                $items = get_post_meta(get_the_ID(), 'index-empty-item', true);
+                $itemsPerRow = 4;
+                $numRows = ceil(count($items) / $itemsPerRow);
+
+                for ($i = 0; $i < $numRows; $i++) {
+                    echo '<tr>';
+                    foreach (array_slice($items, $i * $itemsPerRow, $itemsPerRow) as $item) {
+                        $icon = $title = $content = '';
+
+                        if (isset($item['index-empty-section-icon-title'])) {
+                            $icon = $item['index-empty-section-icon-title'];
+                        }
+
+                        if (isset($item['index-empty-section-title'])) {
+                            $title = $item['index-empty-section-title'];
+                        }
+
+                        if (isset($item['index-empty-section-content'])) {
+                            $content = $item['index-empty-section-content'];
+                        }
+
+
+
+                        echo '<td>';
+
+                        echo '<div class="advs-box advs-box-top-icon" data-anima="pulse-fast" data-trigger="hover">';
+
+
+                        echo '<i class="' . $icon . '">';
+                        echo '</i>';
+
+                        echo '<h3>';
+                        echo $title;
+                        echo '</h3>';
+
+                        echo '<p>';
+                        echo $content;
+                        echo '</p>';
+
+
+                        echo '</div>';
+
+                        echo '</td>';
+                    }
+                    echo '</tr>';
+                }
+
+                ?>
+
             </tbody>
         </table>
     </div>
 </div>
 
+<!-- done  -->
 <div class="section-empty no-paddings">
     <div class="content">
         <div class="flexslider carousel gallery nav-inner" data-options="minWidth:150,numItems:5,itemMargin:0">
             <ul class="slides">
-                <li>
-                    <a class="img-box img-scale-up lightbox grayscale row-10" href="../images/projects/project-1.jpg" data-lightbox-anima="show-scale">
-                        <img src="../images/projects/project-1.jpg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a class="img-box img-scale-up lightbox grayscale row-10" href="../images/projects/project-2.jpg" data-lightbox-anima="show-scale">
-                        <img src="../images/projects/project-2.jpg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a class="img-box img-scale-up lightbox grayscale row-10" href="../images/projects/project-3.jpg" data-lightbox-anima="show-scale">
-                        <img src="../images/projects/project-3.jpg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a class="img-box img-scale-up lightbox grayscale row-10" href="../images/projects/project-4.jpg" data-lightbox-anima="show-scale">
-                        <img src="../images/projects/project-4.jpg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a class="img-box img-scale-up lightbox grayscale row-10" href="../images/projects/project-5.jpg" data-lightbox-anima="show-scale">
-                        <img src="../images/projects/project-5.jpg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a class="img-box img-scale-up lightbox grayscale row-10" href="../images/projects/project-6.jpg" data-lightbox-anima="show-scale">
-                        <img src="../images/projects/project-6.jpg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a class="img-box img-scale-up lightbox grayscale row-10" href="../images/projects/project-7.jpg" data-lightbox-anima="show-scale">
-                        <img src="../images/projects/project-7.jpg" alt="">
-                    </a>
-                </li>
+
+                <?php
+
+                $images = get_post_meta(get_the_ID(), 'index-empty-img-item', true);
+
+                if (!empty($images)) {
+                    foreach ($images as $image) {
+                        $img = '';
+
+                        if (isset($image['index-empty-section-image'])) {
+                            $img = $image['index-empty-section-image'];
+                        }
+                ?>
+
+                        <li>
+                            <a class="img-box img-scale-up lightbox grayscale row-10" href="<?php echo $img ?>" data-lightbox-anima="show-scale">
+                                <img src="<?php echo $img ?>" alt="">
+
+                            </a>
+                        </li>
+
+                <?php
+                    }
+                }
+                ?>
+
             </ul>
         </div>
     </div>
 </div>
 
+<!-- done  -->
 <div class="section-empty section-item">
     <div class="container content">
         <div class="row">
             <div class="col-md-8">
                 <div class="title-base text-left">
                     <hr />
-                    <h2>WHERE WE ARE</h2>
-                    <p>We located in London - United Kingdom</p>
+                    <h2><?php echo get_post_meta(get_the_ID(), 'index-page-section-item-title', true) ?></h2>
+                    <p><?php echo get_post_meta(get_the_ID(), 'index-page-section-item-location', true) ?></p>
                 </div>
                 <hr class="space s" />
                 <p>
-                    Est illo netus natus. Blanditiis autem, justo sagittis tempora? Eligendi recusandae nisi similique parturient minima eligendi exercitation
-                    convallis litora facilisis corrupti? Ante rhoncus praesent augue. Asperiores vitae quod officiis.Cillum voluptas placeat eum praesent! Nisi.
-                    Molestias mauris ac varius? Cubilia potenti faucibus risus, maecenas pellentesque,
-                    mollitia modi, nostrud senectus, assumenda ipsa incidunt quibusdam ouis.
-                    Vel praesentium olutpat numquam incidunt hic et lacus.
+                    <?php echo get_post_meta(get_the_ID(), 'index-page-section-item-content', true) ?>
                 </p>
                 <hr class="space m" />
                 <div class="icon-list text-left">
                     <div class="list-item">
                         <i class="im-map-marker2 text-m"></i>
-                        <label>25/A stret AV, New York, United States</label>
+                        <label><?php echo get_post_meta(get_the_ID(), 'index-page-section-item-address', true) ?></label>
                     </div>
                     <div class="list-item">
                         <i class="im-phone-2 text-m"></i>
-                        <label>(123) 02-556878533</label>
+                        <label><?php echo get_post_meta(get_the_ID(), 'index-page-section-item-phone', true) ?></label>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="google-map circle" data-address="New York, US" data-marker="http://templates.framework-y.com/elon/images/marker-map.png" data-marker-pos-left="20" data-marker-pos-top="15"></div>
+                <div class="google-map circle">
+                    <img class="google-map circle" src="<?php echo get_post_meta(get_the_ID(), 'index-page-section-item-map-image', true) ?>" alt="">
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- done  -->
 <div class="section-bg-color">
     <div class="container content">
         <div class="row">
-            <div class="col-md-3">
-                <div class="icon-box icon-box-top-bottom counter-box-icon">
-                    <div class="icon-box-cell">
-                        <i class="im-globe text-xxl"></i>
+
+            <?php
+
+            $counters = get_post_meta(get_the_ID(), 'index-counter-section-container', true);
+
+            // echo '<pre>';
+            // print_r($counters);
+            // exit;
+
+            if (!empty($counters)) {
+                foreach ($counters as $counter) {
+                    $icon = $title = $data = '';
+
+                    if (isset($counter['index-counter-section-icon'])) {
+                        $icon = $counter['index-counter-section-icon'];
+                    }
+
+                    if (isset($counter['index-counter-section-title'])) {
+                        $title = $counter['index-counter-section-title'];
+                    }
+
+                    if (isset($counter['index-counter-section-data'])) {
+                        $data = (int)$counter['index-counter-section-data'];
+                    }
+            ?>
+
+                    <div class="col-md-3">
+                        <div class="icon-box icon-box-top-bottom counter-box-icon">
+                            <div class="icon-box-cell">
+                                <i class="<?php echo $icon; ?>"></i>
+                            </div>
+                            <div class="icon-box-cell">
+                                <b><label class="counter text-xl" data-speed="5000" data-to="<?php echo $data; ?>"></label></b>
+                                <p class="text-s"><?php echo $title ?></p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="icon-box-cell">
-                        <b><label class="counter text-xl" data-speed="5000" data-to="1250"></label></b>
-                        <p class="text-s">CONNECTIONS</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="icon-box icon-box-top-bottom counter-box-icon">
-                    <div class="icon-box-cell">
-                        <i class="im-teacher text-xxl"></i>
-                    </div>
-                    <div class="icon-box-cell">
-                        <b><label class="counter text-xl" data-speed="5000" data-to="3560"></label></b>
-                        <p class="text-s">EMPLOIERS</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="icon-box icon-box-top-bottom counter-box-icon">
-                    <div class="icon-box-cell">
-                        <i class="im-router text-xxl"></i>
-                    </div>
-                    <div class="icon-box-cell">
-                        <b><label class="counter text-xl" data-speed="5000" data-to="3250"></label></b>
-                        <p class="text-s">KG WIFI COVERED</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="icon-box icon-box-top-bottom counter-box-icon">
-                    <div class="icon-box-cell">
-                        <i class="im-computer-3 text-xxl"></i>
-                    </div>
-                    <div class="icon-box-cell">
-                        <b><label class="counter text-xl" data-speed="5000" data-to="52"></label></b>
-                        <p class="text-s">SOFTWARE CREATED</p>
-                    </div>
-                </div>
-            </div>
+
+            <?php
+                }
+            }
+            ?>
         </div>
     </div>
 </div>
 
+<!-- done  -->
 <div class="section-empty">
     <div class="container content">
         <div class="row vertical-row">
             <div class="col-md-6">
-                <img src="../images/mk-5.jpg" alt="" />
+                <img src="<?php echo get_post_meta(get_the_ID(), 'index-page-empty-container-image', true) ?>" alt="" />
             </div>
             <div class="col-md-6">
-                <div class="icon-box">
-                    <div class="icon-box-cell">
-                        <i class="im-checked-user circle text-xl"></i>
-                    </div>
-                    <div class="icon-box-cell">
-                        <label class="text-m">THE BEST TECHNOLOGIES</label>
-                        <p class="text-s">Possimus illum etiam aspernatur, vulputate aliquet error minus ac arcu sapiente dignissimos quis lobortis, etiam.</p>
-                    </div>
-                </div>
-                <hr class="space m" />
-                <div class="icon-box">
-                    <div class="icon-box-cell">
-                        <i class="im-fire-flame circle text-xl"></i>
-                    </div>
-                    <div class="icon-box-cell">
-                        <label class="text-m">THE FIRST OF THIS KIND</label>
-                        <p class="text-s">Possimus illum etiam aspernatur, vulputate aliquet error minus ac arcu sapiente dignissimos quis lobortis, etiam.</p>
-                    </div>
-                </div>
-                <hr class="space m" />
-                <div class="icon-box">
-                    <div class="icon-box-cell">
-                        <i class="im-space-needle circle text-xl"></i>
-                    </div>
-                    <div class="icon-box-cell">
-                        <label class="text-m">FUTURE ORIENTED</label>
-                        <p class="text-s">Possimus illum etiam aspernatur, vulputate aliquet error minus ac arcu sapiente dignissimos quis lobortis, etiam.</p>
-                    </div>
-                </div>
+
+                <?php
+
+                $contents = get_post_meta(get_the_ID(), 'index-empty-section-container', true);
+
+                if (!empty($contents)) {
+                    foreach ($contents as $content) {
+                        $icon = $title = $desc = '';
+
+                        if (isset($content['index-empty-section-container-icon'])) {
+                            $icon = $content['index-empty-section-container-icon'];
+                        }
+
+                        if (isset($content['index-empty-section-container-title'])) {
+                            $title = $content['index-empty-section-container-title'];
+                        }
+
+                        if (isset($content['index-empty-section-container-desc'])) {
+                            $desc = $content['index-empty-section-container-desc'];
+                        }
+                ?>
+
+                        <div class="icon-box">
+                            <div class="icon-box-cell">
+                                <i class="<?php echo $icon; ?>"></i>
+                            </div>
+                            <div class="icon-box-cell">
+                                <label class="text-m"><?php echo $title; ?></label>
+                                <p class="text-s"><?php echo $desc; ?></p>
+                            </div>
+                        </div>
+                        <hr class="space m" />
+
+                <?php
+                    }
+                }
+
+                ?>
+
             </div>
         </div>
     </div>
 </div>
 
-<div class="section-bg-image parallax-window" data-natural-height="800" data-natural-width="1980" data-parallax="scroll" data-image-src="../images/hd-32.jpg">
+<!-- <div class="section-bg-image parallax-window" data-natural-height="800" data-natural-width="1980" data-parallax="scroll" data-image-src="../images/hd-32.jpg">
     <div class="container content overlay-content   text-center">
         <hr class="space" />
         <div class="title-base" data-anima="show-scale" data-trigger="hover">
@@ -400,9 +378,9 @@ get_header();
         </p>
         <hr class="space" />
     </div>
-</div>
+</div> -->
 
-<div class="section-empty section-item">
+<!-- <div class="section-empty section-item">
     <div class="container content">
         <div class="title-base text-left">
             <hr />
@@ -465,7 +443,7 @@ get_header();
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 
