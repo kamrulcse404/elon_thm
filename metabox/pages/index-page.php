@@ -47,7 +47,7 @@ function index_slider_metaboxes()
         'name' => 'Slider Title',
         'desc' => 'Write Slider Title Here',
         'id' => 'index-slider-title',
-        'type' => 'wysiwyg',
+        'type' => 'text',
     ));
 
     $cmb->add_group_field($add_more_option, array(
@@ -67,7 +67,7 @@ function index_empty_metaboxes()
 {
     $cmb = new_cmb2_box(array(
         'id' => 'index-empty-repeater',
-        'title' => 'Add More Option For Index Empty Section',
+        'title' => 'Add More Option For Index Service Section',
         'object_types' => array('page'),
         'show_on' => array(
             'key' => 'page-template',
@@ -92,10 +92,10 @@ function index_empty_metaboxes()
     ));
 
     $cmb->add_group_field($add_more_option, array(
-        'name' => 'Icon Class Name',
-        'desc' => 'Write Icon Name Here',
-        'id' => 'index-empty-section-icon-title',
-        'type' => 'text',
+        'name' => 'Image',
+        'desc' => 'upload Image Service',
+        'id' => 'index-empty-section-service-image',
+        'type' => 'file',
     ));
 
     $cmb->add_group_field($add_more_option, array(

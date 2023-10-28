@@ -31,22 +31,31 @@ function register_header_menu()
 add_action('after_setup_theme', 'register_header_menu');
 
 
-// // footer menus 
-// function register_footer_menus()
+
+// database 
+require_once('functions/database.php');
+
+
+// ajax call 
+require_once('functions/ajax_actions.php');
+
+// custom functions 
+require_once('functions/custom-post-type.php');
+
+
+
+// mailTrap 
+// function mailtrap($phpmailer)
 // {
-//     register_nav_menus(
-//         array(
-//             'footer_menu' => __('Footer Menu', 'insideverse'),
-//         )
-//     );
+//     $phpmailer->isSMTP();
+//     $phpmailer->Host = 'smtp.mailtrap.io';
+//     $phpmailer->SMTPAuth = true;
+//     $phpmailer->Port = 2525;
+//     $phpmailer->Username = 'dd723a540dede2';
+//     $phpmailer->Password = '8eb1242054fc0a';
 // }
-// add_action('after_setup_theme', 'register_footer_menus');
 
-
-
-
-// // custom functions 
-// require_once('functions/custom-post-type.php');
+// add_action('phpmailer_init', 'mailtrap');
 
 
 

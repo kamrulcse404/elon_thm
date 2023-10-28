@@ -13,65 +13,40 @@ function metabox_for_contact(array $contact_page)
         ),
         'fields' => array(
             array(
-                'id' => 'contact-page-background',
-                'name' => 'Upload Contact Page Background Image',
-                'default' => get_template_directory_uri() . '/assets/images/about-bg.png',
-                'type' => 'file',
-            ),
-            array(
                 'id' => 'contact-page-title',
-                'name' => 'Contact Title',
-                'default' => 'Say Hello to me',
-                'type' => 'text',
-            ),
-            array(
-                'id' => 'contact-page-description',
-                'name' => 'Contact Description',
-                'default' => "Join me in exploring a fusion of creativity and technology. Whether you're a fellow designer or a gamer looking for new experiences, you're in for a treat. Get ready to step into worlds filled with vibrant characters, rich stories, and endless possibilities.",
-                'type' => 'wysiwyg',
-            ),
-
-            array(
-                'id' => 'contact-page-email',
-                'name' => 'Contact Email',
-                'default' => 'getemail@email.com',
-                'type' => 'text',
-            ),
-
-            array(
-                'id' => 'contact-page-number',
-                'name' => 'Contact Number',
-                'default' => '+12 986 987 7867',
+                'name' => 'Title',
+                'default' => 'CONTACT US',
                 'type' => 'text',
             ),
 
             array(
                 'id' => 'contact-page-address',
                 'name' => 'Contact Address',
-                'default' => '37, Pollsatnd, New York, United State',
+                'default' => '19TH & DOLORES ST CA 94114, UNITED STATES',
                 'type' => 'text',
             ),
 
             array(
-                'id' => 'contact-facebook-url',
-                'name' => 'Contact Facebook Url',
-                'default' => 'https://www.facebook.com/',
+                'id' => 'contact-page-number',
+                'name' => 'Phone',
+                'default' => '(123) 0 123 455669',
                 'type' => 'text',
             ),
 
             array(
-                'id' => 'contact-instagram-url',
-                'name' => 'Contact Instagram Url',
-                'default' => 'https://www.instagram.com/',
+                'id' => 'contact-page-email',
+                'name' => 'Email',
+                'default' => 'info@Elon.com',
                 'type' => 'text',
             ),
 
             array(
-                'id' => 'contact-linkedin-url',
-                'name' => 'Contact LinkedIn Url',
-                'default' => 'https://www.linkedin.com/',
-                'type' => 'text',
-            ),
+                'name' => 'Map Link',
+                'id' => 'contact-page-map',
+                'type' => 'textarea_code',
+                'default' => '<iframe class="google-map full-screen-size" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29221.79976661461!2d90.4797935!3d23.721513599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b7aba09d5aff%3A0xce98e5bc6fd9d131!2sDemra%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1698208637286!5m2!1sen!2sbd" width="100%" height="auto" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
+            )
+
         ),
     );
 

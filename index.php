@@ -126,10 +126,10 @@ get_header();
                 for ($i = 0; $i < $numRows; $i++) {
                     echo '<tr>';
                     foreach (array_slice($items, $i * $itemsPerRow, $itemsPerRow) as $item) {
-                        $icon = $title = $content = '';
+                        $img = $title = $content = '';
 
-                        if (isset($item['index-empty-section-icon-title'])) {
-                            $icon = $item['index-empty-section-icon-title'];
+                        if (isset($item['index-empty-section-service-image'])) {
+                            $img = $item['index-empty-section-service-image'];
                         }
 
                         if (isset($item['index-empty-section-title'])) {
@@ -144,22 +144,21 @@ get_header();
 
                         echo '<td>';
 
-                        echo '<div class="advs-box advs-box-top-icon" data-anima="pulse-fast" data-trigger="hover">';
+                            echo '<div class="advs-box advs-box-top-icon" data-anima="pulse-fast" data-trigger="hover">';
 
 
-                        echo '<i class="' . $icon . '">';
-                        echo '</i>';
+                                echo '<img src="'. $img .'" alt="">';
 
-                        echo '<h3>';
-                        echo $title;
-                        echo '</h3>';
+                                echo '<h3>';
+                                    echo $title;
+                                echo '</h3>';
 
-                        echo '<p>';
-                        echo $content;
-                        echo '</p>';
+                                echo '<p>';
+                                    echo $content;
+                                echo '</p>';
 
 
-                        echo '</div>';
+                            echo '</div>';
 
                         echo '</td>';
                     }

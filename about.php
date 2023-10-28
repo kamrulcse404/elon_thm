@@ -214,7 +214,7 @@ get_header();
 </div>
 
 
-<div class="section-empty section-item">
+<!-- <div class="section-empty section-item">
     <div class="container content">
         <div class="title-base">
             <hr />
@@ -295,7 +295,7 @@ get_header();
         </div>
 
     </div>
-</div>
+</div> -->
 
 
 <?php
